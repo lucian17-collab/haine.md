@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion.MD - Magazin Online Premium de Haine</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <h1>👗 Fashion.MD</h1>
+            </div>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Cauta haine..." onkeyup="searchProducts()">
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#home">Acasă</a></li>
+                    <li><a href="#products">Produse</a></li>
+                    <li><a href="#testimonials">Recenzii</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="cart-icon" onclick="toggleCart()">
+                <span>🛒</span>
+                <span class="cart-count" id="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>Stil și Eleganță la Prețuri Accesibile</h2>
+            <p>Colecția noastră de modă premium cu livrare rapidă</p>
+            <button class="btn btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">Descoperă Colecția 👉</button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="feature-item">
+                <span class="feature-icon">🚚</span>
+                <h3>Livrare Rapidă</h3>
+                <p>Livrare în 1-3 zile lucratoare</p>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">💯</span>
+                <h3>Calitate Premium</h3>
+                <p>Materiale de cea mai bună calitate</p>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">🔄</span>
+                <h3>Retur Gratuit</h3>
+                <p>30 zile retur garantat</p>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">💳</span>
+                <h3>Plăți Sigure</h3>
+                <p>Securitate 100% garantată</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2>Colecția Noastră</h2>
+            <div class="filters">
+                <button class="filter-btn active" onclick="filterProducts('all')">Toate Produsele</button>
+                <button class="filter-btn" onclick="filterProducts('men')">👔 Bărbați</button>
+                <button class="filter-btn" onclick="filterProducts('women')">👗 Femei</button>
+                <button class="filter-btn" onclick="filterProducts('kids')">👶 Copii</button>
+            </div>
+            <div class="products-grid" id="products-grid">
+                <!-- Products will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2>Ce Spun Clienții Noștri</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Hainele sunt de o calitate excelentă și conform descrierii. Livrarea a fost foarte rapidă!"</p>
+                    <strong>Maria Popescu</strong>
+                    <small>Chișinău</small>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Cel mai bun magazin online de haine! Sunt foarte mulțumit de procesul de cumpărare și de produse."</p>
+                    <strong>Ion Vasilescu</strong>
+                    <small>Iași</small>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Cu siguranță voi mai comanda! Design frumos, transport rapid și preț excelent."</p>
+                    <strong>Elena Gheorghe</strong>
+                    <small>București</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Abonează-te la Newsletter-ul Nostru</h2>
+            <p>Primește ofertele exclusive și noutățile despre colecția noastră</p>
+            <div class="newsletter-form">
+                <input type="email" placeholder="Introdu-ți email-ul..." id="newsletter-email">
+                <button class="btn btn-primary" onclick="subscribeNewsletter()">Abonează-te</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>🛒 Coșul Tău</h3>
+            <button class="close-btn" onclick="toggleCart()">✕</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <p class="empty-cart">Coșul este gol</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total:</strong>
+                <strong id="cart-total">0 MDL</strong>
+            </div>
+            <button class="btn btn-primary w-100" onclick="checkout()">Finalizează Comanda</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Despre Fashion.MD</h4>
+                    <p>Fashion.MD este magazinul tău de modă online, oferind cea mai bună selecție de haine cu stil și calitate superioară.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>📞 Contact</h4>
+                    <p>📧 popaslucian17@gmail.com
+                    </p>
+                    <p>📱 +373 69190445</p>
+                    <p>📍 Chișinău, Moldova</p>
+                </div>
+                <div class="footer-section">
+                    <h4>🔗 Rețele Sociale</h4>
+                    <p>
+                        <a href="https://facebook.com" target="_blank">Facebook</a> | 
+                        <a href="https://instagram.com" target="_blank">Instagram</a> | 
+                        <a href="https://twitter.com" target="_blank">Twitter</a>
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>⚖️ Info Legale</h4>
+                    <p>
+                        <a href="#">Termeni & Condiții</a><br>
+                        <a href="#">Politica de Intimitate</a>
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Fashion.MD. Toate drepturile rezervate. Made with ❤️</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
